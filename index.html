@@ -5,55 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-        <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-
-        #textToCopy {
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            margin-bottom: 20px;
-        }
-
-        #copyButton {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        #copyButton:hover {
-            background-color: #45a049;
-        }
-
-        .notification {
-            color: green;
-            font-size: 14px;
-            margin-top: 10px;
-            display: none;
-        }
+    <style>
+       
     </style>
 </head>
 
 <body>
     <h1>Disable-PnpDevice -InstanceId 'USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008' -Confirm:$false</h1>
- <h1>powershell -Command "Start-Process powershell -ArgumentList '-c \"Disable-PnpDevice -InstanceId \\\"USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008\\\" -Confirm:$false\"' -Verb RunAs"</h1>
-<p id="req"></p>
+    <h1>powershell -Command "Start-Process powershell -ArgumentList '-c \"Disable-PnpDevice -InstanceId \\\"USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008\\\" -Confirm:$false\"' -Verb RunAs"</h1>
+    <p id="req"></p>
     
-    <h1>Tự động copy văn bản và nút copy</h1>
 
-    <p id="textToCopy">Đây là đoạn văn bản sẽ được copy tự động khi truy cập website.</p>
-    
-    <button id="copyButton">Nhấn để copy văn bản</button>
-
-    <p class="notification" id="notification">Đã copy thành công!</p>
-
+    <div id="copyIcon">📋</div>
     <script>
-        // Hàm copy văn bản vào clipboard
+
+        const textToCopy = "Đây là văn bản sẽ được sao chép";
+
         function copyText(text) {
             const textarea = document.createElement("textarea");
             textarea.value = text;
@@ -63,29 +30,11 @@
             document.body.removeChild(textarea);
         }
 
-        // Tự động copy khi truy cập website
-        window.onload = function() {
-            const textToCopy = document.getElementById("textToCopy").innerText;
+        // Sự kiện khi click vào icon
+        document.getElementById("copyIcon").addEventListener("click", function() {
             copyText(textToCopy);
-            showNotification("Đã tự động copy văn bản!");
-        }
-
-        // Thêm sự kiện cho nút copy
-        document.getElementById("copyButton").addEventListener("click", function() {
-            const textToCopy = document.getElementById("textToCopy").innerText;
-            copyText(textToCopy);
-            showNotification("Đã copy thành công!");
         });
 
-        // Hiển thị thông báo
-        function showNotification(message) {
-            const notification = document.getElementById("notification");
-            notification.innerText = message;
-            notification.style.display = "block";
-            setTimeout(function() {
-                notification.style.display = "none";
-            }, 2000);
-        }
  
         fetch('https://664aa391a300e8795d427b86.mockapi.io/temp/1')
             .then(v => v.json())
