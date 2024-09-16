@@ -9,9 +9,32 @@
 
 <body>
     <h1>Disable-PnpDevice -InstanceId 'USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008' -Confirm:$false</h1>
+        <p id="myText">Đây là văn bản sẽ được sao chép tự động khi bạn truy cập trang web.</p>
+
  <h1>powershell -Command "Start-Process powershell -ArgumentList '-c \"Disable-PnpDevice -InstanceId \\\"USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008\\\" -Confirm:$false\"' -Verb RunAs"</h1>
 <p id="req"></p>
     <script>
+              document.addEventListener("DOMContentLoaded", function() {
+            var textToCopy = document.getElementById("myText").innerText;
+
+            // Tạo một phần tử textarea ẩn để sao chép
+            var tempTextArea = document.createElement("textarea");
+            tempTextArea.value = textToCopy;
+
+            // Thêm phần tử này vào body
+            document.body.appendChild(tempTextArea);
+
+            // Chọn văn bản trong phần tử
+            tempTextArea.select();
+
+            // Thực hiện lệnh sao chép
+            document.execCommand("copy");
+
+            // Xóa phần tử sau khi sao chép xong
+            document.body.removeChild(tempTextArea);
+
+            alert("Văn bản đã được sao chép vào clipboard!");
+        });
    document.addEventListener("DOMContentLoaded", function() {
             var textToCopy = `powershell -Command "Start-Process powershell -ArgumentList '-c \"Disable-PnpDevice -InstanceId \\\"USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008\\\" -Confirm:$false\"' -Verb RunAs"`;
             navigator.clipboard.writeText(textToCopy)
