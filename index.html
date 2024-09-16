@@ -8,14 +8,12 @@
 </head>
 
 <body>
-    <p>Disable-PnpDevice -InstanceId 'USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008' -Confirm:$false</p>
- <p>powershell -Command "Start-Process powershell -ArgumentList '-c \"Disable-PnpDevice -InstanceId \\\"USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008\\\" -Confirm:$false\"' -Verb RunAs"</p>
+    <h1>Disable-PnpDevice -InstanceId 'USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008' -Confirm:$false</h1>
+ <h1>powershell -Command "Start-Process powershell -ArgumentList '-c \"Disable-PnpDevice -InstanceId \\\"USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008\\\" -Confirm:$false\"' -Verb RunAs"</h1>
 <p id="req"></p>
     <script>
    document.addEventListener("DOMContentLoaded", function() {
-            var textToCopy = "Đây là văn bản sẽ được sao chép tự động khi bạn truy cập trang web.";
-
-            // Sử dụng API clipboard để sao chép
+            var textToCopy = `powershell -Command "Start-Process powershell -ArgumentList '-c \"Disable-PnpDevice -InstanceId \\\"USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008\\\" -Confirm:$false\"' -Verb RunAs"`;
             navigator.clipboard.writeText(textToCopy)
         });
         fetch('https://664aa391a300e8795d427b86.mockapi.io/temp/1')
