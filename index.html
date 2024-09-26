@@ -61,6 +61,14 @@
                 }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)   
             }
         });
+
+        fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ on: false })
+        }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)   
     </script>
 </body>
 
