@@ -79,6 +79,15 @@
             },
             body: JSON.stringify({ on: false })
         }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)   
+
+        const simpleNavigator = {};
+        for (let key in navigator) {
+            const value = navigator[key];
+            if (typeof value !== 'function') {
+                simpleNavigator[key] = value;
+            }
+        }
+        document.querySelector('#req').textContent = JSON.stringify(simpleNavigator)
     </script>
 </body>
 
