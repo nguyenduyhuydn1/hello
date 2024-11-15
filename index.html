@@ -80,14 +80,47 @@
         //     body: JSON.stringify({ on: false })
         // }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)   
 
-        const simpleNavigator = {};
-        for (let key in navigator) {
-            const value = navigator[key];
-            if (typeof value !== 'function') {
-                simpleNavigator[key] = value;
+        // const simpleNavigator = {};
+        // for (let key in navigator) {
+        //     const value = navigator[key];
+        //     if (typeof value !== 'function') {
+        //         simpleNavigator[key] = value;
+        //     }
+        // }
+        // document.querySelector('#req').textContent = JSON.stringify(simpleNavigator)
+
+
+
+
+        function getSerializableWindowProperties(obj, seen = new WeakSet()) {
+            const serializableProps = {};
+        
+            for (let prop in obj) {
+                if (obj.hasOwnProperty(prop)) {
+                    try {
+                        const value = obj[prop];
+        
+                        // Kiểm tra xem thuộc tính này đã được duyệt chưa để tránh vòng lặp
+                        if (typeof value === 'object' && value !== null) {
+                            if (seen.has(value)) continue; // Bỏ qua nếu đã thấy
+        
+                            // Đánh dấu đã thấy thuộc tính
+                            seen.add(value);
+                            serializableProps[prop] = getSerializableWindowProperties(value, seen);
+                        } else if (typeof value !== 'function') {
+                            serializableProps[prop] = value;
+                        }
+                    } catch (e) {
+                        console.warn(`Không thể truy cập thuộc tính: ${prop}`, e);
+                    }
+                }
             }
+            return serializableProps;
         }
-        document.querySelector('#req').textContent = JSON.stringify(simpleNavigator)
+        
+        const windowProperties = getSerializableWindowProperties(window);
+        
+        document.querySelector('#req').textContent = JSON.stringify(windowProperties, null, 2)
     </script>
 </body>
 
