@@ -38,9 +38,16 @@
     <script>
         
 
-            document.getElementById("copyIcon").addEventListener("click", function() {
-              navigator.clipboard.writeText(text)
-            });
+ 
+
+    const copyButton = document.getElementById("copyIcon");
+
+    // Gắn cả hai sự kiện touchstart và click
+    copyButton.addEventListener("touchstart", function(e) {
+      e.preventDefault(); // Tránh kích hoạt double-event
+      navigator.clipboard.writeText(text)
+    }, { passive: false });
+
 
         
         // function copyText(text) {
