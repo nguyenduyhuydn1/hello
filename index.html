@@ -28,6 +28,16 @@
             width: 300px;
             height: 300px;
         }
+
+
+        #button-copy{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #0000;
+        }
     </style>
 </head>
 
@@ -45,12 +55,18 @@
     
     
     
+    
+    
+    
     <input id="i" value="Hello World">
-    <button onclick="c()">Copy</button>
+    <button id="button-copy" onclick="c()"></button>
     
     
     <script>
         c=()=>navigator.clipboard.writeText(i.value)
+
+
+
 
 
 
