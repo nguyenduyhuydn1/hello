@@ -91,9 +91,9 @@
             const birthYearShort = String(new Date().getFullYear() - age).slice(-2); // lấy 2 số cuối
         
             const dob = `${day}${month}${birthYearShort}`;
-            const shortStamp = Date.now().toString().slice(-2);
+            const shortStamp = Date.now().toString().slice(-1);
         
-            return `${fullName}.${dob}.${shortStamp}`;
+            return `${shortStamp}${fullName}.${dob}`;
         }
 
         
