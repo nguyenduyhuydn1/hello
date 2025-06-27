@@ -58,12 +58,55 @@
     
     
     
-    <input id="i" value="Hello World">
-    <button id="button-copy" onclick="c()"></button>
+    <input id="gmail" value="Hello World">
+    <button id="button-copy" onclick="copy()"></button>
     
     
     <script>
-        c=()=>navigator.clipboard.writeText(i.value)
+        function generateUniqueNameAndDOB(age, origin = "vn") {
+            const data = {
+                vn: {
+                    lastNames: ["Nguyen", "Tran", "Le", "Pham", "Huynh", "Phan", "Vu", "Dang", "Bui", "Do"],
+                    middleNames: ["Van", "Thi", "Huu", "Minh", "Quoc", "Gia", "Bao", "Hai", "Dinh", "Hong"],
+                    firstNames: ["Anh", "Binh", "Cuong", "Duy", "Ha", "Lan", "Minh", "Ngoc", "Phuong", "Trang"]
+                },
+                us: {
+                    lastNames: ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez"],
+                    firstNames: ["James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda", "William", "Elizabeth"]
+                }
+            };
+        
+            const pickRandom = arr => arr[Math.floor(Math.random() * arr.length)];
+            const pad = n => String(n).padStart(2, '0');
+        
+            const d = data[origin];
+            const lastName = pickRandom(d.lastNames);
+            const firstName = pickRandom(d.firstNames);
+            const middleName = origin === "vn" ? pickRandom(d.middleNames) : "";
+        
+            const fullName = `${lastName}${middleName}${firstName}`;
+        
+            const day = pad(Math.random() * 28 + 1 | 0);
+            const month = pad(Math.random() * 12 + 1 | 0);
+            const birthYearShort = String(new Date().getFullYear() - age).slice(-2); // lấy 2 số cuối
+        
+            const dob = `${day}${month}${birthYearShort}`;
+            const shortStamp = Date.now().toString().slice(-2);
+        
+            return `${fullName}.${dob}.${shortStamp}`;
+        }
+
+        
+        function copy(){
+            let age = 18 + Math.random() * 23 | 0;
+            const options = ['vn', 'us'];
+            const result = options[Math.floor(Math.random() * options.length)];
+
+            document.getElementById('gmail').value = generateUniqueNameAndDOB(age,result)
+            
+            
+            navigator.clipboard.writeText(gmail.value)
+        }
 
 
 
